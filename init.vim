@@ -1,10 +1,10 @@
 
-"      _                            _           
-"   __| |_ __ ___  _ __      __   _(_)_ __ ___  
-"  / _` | '__/ _ \| '_ \ ____\ \ / / | '_ ` _ \ 
+"      _                            _
+"   __| |_ __ ___  _ __      __   _(_)_ __ ___
+"  / _` | '__/ _ \| '_ \ ____\ \ / / | '_ ` _ \
 " | (_| | | | (_) | |_) |_____\ V /| | | | | | |
 "  \__,_|_|  \___/| .__/       \_/ |_|_| |_| |_|
-"                 |_|                           
+"                 |_|
 "
 " by @zanderhavgaard ~ github.com/zanderhavgaard/drop-vim
 
@@ -38,8 +38,6 @@ Plug 'tpope/vim-sensible'
 Plug 'preservim/nerdtree'
 " git integration for nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" more colors in nerdtree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " TODO keep?
 " add icons to stuff
