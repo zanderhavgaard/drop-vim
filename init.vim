@@ -20,6 +20,8 @@ let g:loaded_node_provider = 0
 let g:loaded_python_provider = 0
 " disable python3 integration
 let g:python3_host_prog = 0
+" disable perl provider
+let g:loaded_perl_provider = 0
 
 " ===== Vim Plug =====
 
@@ -112,6 +114,11 @@ Plug 'wesQ3/vim-windowswap'
 " cheatsheet for vim
 Plug 'lifepillar/vim-cheat40'
 
+" fzf like fuzzy searching
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " ===== colorschemes =====
 Plug 'rakr/vim-one'
 Plug 'gruvbox-community/gruvbox'
@@ -119,6 +126,39 @@ Plug 'dracula/vim'
 
 " done installing plugins
 call plug#end()
+
+" ===== startify =====
+
+" use unicode chars in the header
+let g:startify_fortune_use_unicode = 1
+
+let g:ascii_header =<< END
+  __
+ /\ \                                         __
+ \_\ \  _ __   ___   _____            __  __ /\_\    ___ ___
+ /'_` \/\`'__\/ __`\/\ '__`\  _______/\ \/\ \\/\ \ /' __` __`\
+/\ \L\ \ \ \//\ \L\ \ \ \L\ \/\______\ \ \_/ |\ \ \/\ \/\ \/\ \
+\ \___,_\ \_\\ \____/\ \ ,__/\/______/\ \___/  \ \_\ \_\ \_\ \_\
+ \/__,_ /\/_/ \/___/  \ \ \/           \/__/    \/_/\/_/\/_/\/_/
+                       \ \_\
+                        \/_/
+
+END
+
+let g:header_line = [
+    \ '─────────────────────────────────────────────────────────────────',
+    \ ]
+
+let g:post_header = [
+    \ 'drop-vim by @zanderhavgaard | github.com/zanderhavgaard/drop-vim',
+    \ '',
+    \ '~ Happy Hacking! ~',
+    \ '',
+    \ ]
+
+let g:startify_custom_header = startify#pad(g:ascii_header + startify#fortune#cowsay() + g:header_line + g:post_header)
+
+
 
 " ===== Colorscheme // UI =====
 
@@ -333,7 +373,7 @@ command Todo noautocmd vimgrep /TODO\|FIXME\|HACK/j ** | cw
 " ===== Custom Keybindings =====
 
 " neovim terminal
-if has('nvim')
+if has("nvim")
   " exit terminal insert mode
   tnoremap <Esc> <C-\><C-n>
   " move buffers
@@ -485,3 +525,21 @@ let g:which_key_map['s'] = {
 nnoremap <Leader>? :Cheat40<CR>
 " TODO fix name not displaying
 let g:which_key_map['?'] = {'name':'cheat sheet'}
+
+" telescope fuzzy searching
+" recursively search files
+nnoremap <leader>nn <cmd>Telescope find_files<cr>
+" search files in git repo
+nnoremap <leader>ng <cmd>Telescope git_files<cr>
+" grep string under cursor
+nnoremap <leader>nj <cmd>Telescope grep_string<cr>
+" interactively grep
+nnoremap <leader>nf <cmd>Telescope live_grep<cr>
+" select buffer
+nnoremap <leader>nb <cmd>Telescope buffers<cr>
+" search help tags
+nnoremap <leader>nh <cmd>Telescope help_tags<cr>
+" search man pages
+nnoremap <leader>nm <cmd>Telescope man_pages<cr>
+" search registers
+nnoremap <leader>nr <cmd>Telescope registers<cr>
