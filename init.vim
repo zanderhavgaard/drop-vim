@@ -114,11 +114,6 @@ Plug 'wesQ3/vim-windowswap'
 " cheatsheet for vim
 Plug 'lifepillar/vim-cheat40'
 
-" fzf like fuzzy searching
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
 " ===== colorschemes =====
 Plug 'rakr/vim-one'
 Plug 'gruvbox-community/gruvbox'
@@ -207,8 +202,10 @@ set relativenumber
 
 " no linenumbers in terminal buffers
 " TODO throws error when running in vim
-au TermOpen * setlocal nonumber norelativenumber scrolloff=0
-au TermOpen * IndentLinesToggle
+if has("nvim")
+    au TermOpen * setlocal nonumber norelativenumber scrolloff=0
+    au TermOpen * IndentLinesToggle
+endif
 
 " always center the currnet line in the buffer
 set scrolloff=999
@@ -525,21 +522,3 @@ let g:which_key_map['s'] = {
 nnoremap <Leader>? :Cheat40<CR>
 " TODO fix name not displaying
 let g:which_key_map['?'] = {'name':'cheat sheet'}
-
-" telescope fuzzy searching
-" recursively search files
-nnoremap <leader>nn <cmd>Telescope find_files<cr>
-" search files in git repo
-nnoremap <leader>ng <cmd>Telescope git_files<cr>
-" grep string under cursor
-nnoremap <leader>nj <cmd>Telescope grep_string<cr>
-" interactively grep
-nnoremap <leader>nf <cmd>Telescope live_grep<cr>
-" select buffer
-nnoremap <leader>nb <cmd>Telescope buffers<cr>
-" search help tags
-nnoremap <leader>nh <cmd>Telescope help_tags<cr>
-" search man pages
-nnoremap <leader>nm <cmd>Telescope man_pages<cr>
-" search registers
-nnoremap <leader>nr <cmd>Telescope registers<cr>
