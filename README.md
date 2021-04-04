@@ -1,3 +1,5 @@
+![screenshot](screenshot.png)
+
 # drop-vim
 Minimal vim/neovim config intended to be 'dropped' on remote servers to provide an opinionated, but minimal vim editor.
 
