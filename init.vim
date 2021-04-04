@@ -127,21 +127,8 @@ call plug#end()
 " use unicode chars in the header
 let g:startify_fortune_use_unicode = 1
 
-let g:ascii_header =<< END
-  __
- /\ \                                         __
- \_\ \  _ __   ___   _____            __  __ /\_\    ___ ___
- /'_` \/\`'__\/ __`\/\ '__`\  _______/\ \/\ \\/\ \ /' __` __`\
-/\ \L\ \ \ \//\ \L\ \ \ \L\ \/\______\ \ \_/ |\ \ \/\ \/\ \/\ \
-\ \___,_\ \_\\ \____/\ \ ,__/\/______/\ \___/  \ \_\ \_\ \_\ \_\
- \/__,_ /\/_/ \/___/  \ \ \/           \/__/    \/_/\/_/\/_/\/_/
-                       \ \_\
-                        \/_/
-
-END
-
 let g:header_line = [
-    \ '─────────────────────────────────────────────────────────────────',
+    \ '────────────────────────────────────────────────────────────────',
     \ ]
 
 let g:post_header = [
@@ -151,9 +138,7 @@ let g:post_header = [
     \ '',
     \ ]
 
-let g:startify_custom_header = startify#pad(g:ascii_header + startify#fortune#cowsay() + g:header_line + g:post_header)
-
-
+let g:startify_custom_header = startify#pad(startify#fortune#cowsay() + g:header_line + g:post_header)
 
 " ===== Colorscheme // UI =====
 
